@@ -13,7 +13,7 @@ public class AppConfig {
 
     public static void config()  {
         try {
-            Configuration cfg = new PropertiesConfiguration("app.config");
+            Configuration cfg = new PropertiesConfiguration(Constants.CONFIG_FILE);
             Constants.DEPOT_DIR = cfg.getString("app.depot_dir","//depot/");
             Constants.EXEC_DIR = cfg.getString("app.exec_dir","/");
             log.info("Load app context configuration... OK --> " + Utils.getConfigurations(cfg, "app"));

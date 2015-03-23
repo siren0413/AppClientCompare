@@ -1,11 +1,7 @@
 package com.ea.app;
 
-import com.ea.p4.P4Server;
 import org.apache.log4j.Logger;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 
 public class Main {
 
@@ -16,5 +12,7 @@ public class Main {
         DiffReportTool tool = new DiffReportTool();
         tool.processDiff();
         System.out.println(tool.report());
+        System.out.println("exit.");
+        System.exit(0);
     }
 }

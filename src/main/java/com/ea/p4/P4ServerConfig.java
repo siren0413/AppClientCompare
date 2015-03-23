@@ -1,5 +1,6 @@
 package com.ea.p4;
 
+import com.ea.Constants;
 import com.ea.Utils;
 import com.perforce.p4java.option.UsageOptions;
 import com.perforce.p4java.server.IOptionsServer;
@@ -24,13 +25,14 @@ public abstract class P4ServerConfig {
 
     protected static void configure()  {
         try {
-            Configuration configuration = new PropertiesConfiguration("app.config");
+            Configuration configuration = new PropertiesConfiguration(Constants.CONFIG_FILE);
             serverUri = configuration.getString("p4.serverUri","");
             userName = configuration.getString("p4.userName","");
             password = configuration.getString("p4.password","");
             log.info("Load p4 server configuration... OK --> " + Utils.getConfigurations(configuration, "p4"));
         } catch (ConfigurationException e) {
             log.error("Load p4 server configuration... FAIL", e);
+            System.exit(0);
         }
     }
 
@@ -44,6 +46,7 @@ public abstract class P4ServerConfig {
             log.info("Connect to p4 server... OK");
         } catch (Exception e) {
             log.error("P4 server connect error", e);
+            System.exit(0);
         }
         return server;
     }

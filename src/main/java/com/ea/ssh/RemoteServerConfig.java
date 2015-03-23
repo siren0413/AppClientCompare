@@ -1,5 +1,6 @@
 package com.ea.ssh;
 
+import com.ea.Constants;
 import com.ea.Utils;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
@@ -25,7 +26,7 @@ public class RemoteServerConfig {
 
     public static void configure() {
         try {
-            Configuration cfg = new PropertiesConfiguration("app.config");
+            Configuration cfg = new PropertiesConfiguration(Constants.CONFIG_FILE);
             host = cfg.getString("ssh.host", "localhost");
             user = cfg.getString("ssh.user", "root");
             password = cfg.getString("ssh.password", "");
@@ -33,6 +34,7 @@ public class RemoteServerConfig {
             log.info("Load remote server ssh configuration... OK --> " + Utils.getConfigurations(cfg, "ssh"));
         } catch (ConfigurationException e) {
             log.error("Load remote server ssh config... FAIL", e);
+            System.exit(0);
         }
     }
 
@@ -49,6 +51,7 @@ public class RemoteServerConfig {
             }
         } catch (JSchException e) {
             log.error("Connect to ssh error",e);
+            System.exit(0);
         }
         return session;
     }

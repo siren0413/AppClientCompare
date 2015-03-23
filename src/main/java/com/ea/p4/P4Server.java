@@ -56,6 +56,7 @@ public class P4Server extends P4ServerConfig {
             log.info("Sync " + map.size() + " files from " + Constants.DEPOT_DIR + "... OK");
         } catch (Exception e){
             log.error("Sync files error from p4 server... FAIL", e);
+            System.exit(0);
         }
         return map;
     }

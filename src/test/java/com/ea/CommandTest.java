@@ -1,6 +1,5 @@
 package com.ea;
 
-import com.ea.p4.P4Server;
 import com.ea.ssh.Command;
 import com.ea.ssh.CommandBuilder;
 import org.junit.Test;

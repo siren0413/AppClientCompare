@@ -43,8 +43,10 @@ public class RemoteServerExecutor extends RemoteServerConfig{
 
             } catch (JSchException e) {
                 log.error("Ssh session connect error", e);
+                System.exit(0);
             } catch (IOException e) {
                 log.error("IO error", e);
+                System.exit(0);
             } finally {
                 if (channel != null && channel.isConnected()) {
                     channel.disconnect();
