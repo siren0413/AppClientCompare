@@ -16,6 +16,7 @@ public class AppConfig {
             Configuration cfg = new PropertiesConfiguration(Constants.CONFIG_FILE);
             Constants.DEPOT_DIR = cfg.getString("app.depot_dir","//depot/");
             Constants.EXEC_DIR = cfg.getString("app.exec_dir","/");
+            Constants.CLIENT_ID_XML_CLASSPATH_DIRECTORY = cfg.getString("app.client_id_xml_classpath_dir","/");
             log.info("Load app context configuration... OK --> " + Utils.getConfigurations(cfg, "app"));
         } catch (ConfigurationException e) {
             log.error("Load app context configuration... FAIL", e);
